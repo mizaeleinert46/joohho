@@ -249,12 +249,24 @@ p { margin: 0; }
 .locked svg { width: 13px; height: 13px; }
 
 .offer { display: grid; gap: 16px; }
-.book { display: grid; grid-template-columns: 130px 1fr; gap: 16px; align-items: center; }
+.book { display: grid; grid-template-columns: 110px 1fr; gap: 16px; align-items: center; }
+.book h2 { font-size: 26px; margin-block: 2px; }
+.lead { font-size: 15.5px; line-height: 1.55; }
+.lead b { color: var(--wine); }
+.gets { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.gets li { display: flex; gap: 12px; align-items: flex-start; }
+.gets .gi { flex: none; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: var(--petal); font-size: 17px; }
+.gets div { min-width: 0; display: grid; gap: 1px; }
+.gets b { font-size: 15px; }
+.gets span:not(.gi) { font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+.gets li.hl { background: var(--porcelain); border: 1px solid var(--gold-soft); border-radius: 14px; padding: 10px; margin-inline: -10px; }
+.gets li.hl .gi { background: var(--gold-soft); }
+.gets li.hl b { color: var(--wine); }
+.quote { margin: 0; display: flex; gap: 12px; align-items: flex-start; padding-top: 14px; border-top: 1px solid var(--line); }
+.quote img { flex: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.quote figcaption { font-size: 14.5px; font-style: italic; line-height: 1.5; min-width: 0; }
+.quote cite { display: block; font-style: normal; font-size: 12.5px; color: var(--muted); margin-top: 3px; }
 .book img { width: 100%; border-radius: 6px; box-shadow: 0 10px 24px rgba(90, 23, 38, .25); transform: rotate(-2deg); }
-.book ul { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 6px; font-size: 14px; }
-.book li { display: flex; gap: 8px; }
-.book li::before { content: "✓"; color: var(--ok); font-weight: 700; }
-.book li.hl { font-weight: 700; color: var(--wine); }
 .book > div { min-width: 0; }
 .price { display: flex; align-items: baseline; justify-content: center; gap: 10px; flex-wrap: wrap; }
 .price s { color: var(--muted); font-size: 15px; }
@@ -277,7 +289,7 @@ p { margin: 0; }
 .app.has-sticky { padding-bottom: 84px; }
 
 @media (max-width: 360px) {
-  .book { grid-template-columns: 96px 1fr; }
+  .book { grid-template-columns: 88px 1fr; }
   .photo-foot h2 { font-size: 26px; }
 }
 
@@ -306,7 +318,11 @@ const CONFIG = {
   // que existem de verdade no eBook, liste os números aqui.
   // Lista vazia = sorteia entre 1 e totalRecipes.
   recipesByConcern: {
-    acne: [], manchas: [], poros: [], linhas: [], olheiras: [], opaca: []
+    // rosto
+    acne: [], manchas: [], poros: [], linhas: [], olheiras: [], opaca: [],
+    // corpo
+    manchas_corpo: [], estrias: [], celulite: [], aspereza: [], ressecamento: [],
+    flacidez: [], pelos: [], acne_costas: [], escurecimento: [], rachaduras: [], maos_idade: []
   }
 };
 const AVATAR = "data:image/jpeg;base64,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";
@@ -315,56 +331,98 @@ const COVER = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAcFBQYFBA
 /* ============================================================ */
 
 const app = document.getElementById("app");
-const state = { photoUrl: null, seed: 0, answers: {} };
+const state = { area: null, photoUrl: null, seed: 0, answers: {} };
 
-const QUESTIONS = [
-  {
-    id: "tipo",
-    say: ["Recebi sua foto! 📸", "Enquanto eu preparo a análise, me conta: <b>no fim do dia, como sua pele fica?</b>"],
-    opts: [
-      { v: "oleosa", ic: "💧", t: "Brilhando no rosto todo", s: "Preciso secar o rosto durante o dia" },
-      { v: "mista", ic: "🌗", t: "Brilho só na testa e no nariz", s: "As bochechas ficam normais" },
-      { v: "seca", ic: "🍂", t: "Repuxando ou descamando", s: "Sinto a pele apertada depois de lavar" },
-      { v: "normal", ic: "🌸", t: "Confortável", s: "Sem muito brilho e sem repuxar" }
-    ]
-  },
-  {
-    id: "concern",
-    say: ["Anotado.", "<b>O que mais te incomoda</b> quando você se olha no espelho?"],
-    opts: [
-      { v: "acne", ic: "🔴", t: "Espinhas e cravos" },
-      { v: "manchas", ic: "🟤", t: "Manchas e marcas" },
-      { v: "poros", ic: "🔍", t: "Poros dilatados" },
-      { v: "linhas", ic: "〰️", t: "Linhas finas e rugas" },
-      { v: "olheiras", ic: "👁️", t: "Olheiras e inchaço" },
-      { v: "opaca", ic: "✨", t: "Pele sem viço, opaca" }
-    ]
-  },
-  {
-    id: "sens",
-    say: ["Última pergunta 🙏", "Sua pele <b>arde ou fica vermelha</b> quando você testa um produto novo?"],
-    opts: [
-      { v: "sim", ic: "🔥", t: "Sim, quase sempre" },
-      { v: "asvezes", ic: "🌡️", t: "Às vezes" },
-      { v: "nao", ic: "🛡️", t: "Quase nunca" }
-    ]
-  }
-];
+/* Partes do corpo que dá pra analisar. "concerns" = opções da pergunta "o que mais te incomoda". */
+const AREAS = {
+  rosto:   { ic: "🙂", label: "Rosto", sub: "Testa, bochechas, nariz, olhos e queixo", short: "Rosto", where: "no seu rosto", face: true,
+             concerns: ["acne", "manchas", "poros", "linhas", "olheiras", "opaca"] },
+  corpo:   { ic: "🦵", label: "Braços, pernas e barriga", sub: "Coxas, bumbum, barriga e braços", short: "Corpo", where: "nessa região",
+             concerns: ["manchas_corpo", "estrias", "celulite", "aspereza", "ressecamento", "flacidez"] },
+  costas:  { ic: "🧍", label: "Costas, colo e pescoço", sub: "Espinhas, manchas e textura", short: "Costas e colo", where: "nessa região",
+             concerns: ["acne_costas", "manchas_corpo", "aspereza", "ressecamento", "flacidez"] },
+  dobras:  { ic: "💪", label: "Axilas, virilha, joelhos e cotovelos", sub: "Áreas que escurecem ou ficam ásperas", short: "Dobras e articulações", where: "nessa região",
+             concerns: ["escurecimento", "pelos", "aspereza", "ressecamento"] },
+  maospes: { ic: "🤲", label: "Mãos e pés", sub: "Ressecamento, rachaduras e manchas", short: "Mãos e pés", where: "nessa região",
+             concerns: ["ressecamento", "rachaduras", "manchas_corpo", "maos_idade"] }
+};
+
+function questionsFor(area) {
+  const face = AREAS[area].face;
+  return [
+    face ? {
+      id: "tipo",
+      say: ["Recebi sua foto! 📸", "Enquanto eu preparo a análise, me conta: <b>no fim do dia, como sua pele fica?</b>"],
+      opts: [
+        { v: "oleosa", ic: "💧", t: "Brilhando no rosto todo", s: "Preciso secar o rosto durante o dia" },
+        { v: "mista", ic: "🌗", t: "Brilho só na testa e no nariz", s: "As bochechas ficam normais" },
+        { v: "seca", ic: "🍂", t: "Repuxando ou descamando", s: "Sinto a pele apertada depois de lavar" },
+        { v: "normal", ic: "🌸", t: "Confortável", s: "Sem muito brilho e sem repuxar" }
+      ]
+    } : {
+      id: "tipo",
+      say: ["Recebi sua foto! 📸", "Enquanto eu preparo a análise, me conta: <b>como a pele dessa região costuma ficar?</b>"],
+      opts: [
+        { v: "seca", ic: "🍂", t: "Ressecada", s: "Repuxa, coça ou fica esbranquiçada" },
+        { v: "oleosa", ic: "💧", t: "Oleosa", s: "Tem brilho e aparecem espinhas" },
+        { v: "normal", ic: "🌸", t: "Normal", s: "Macia e confortável na maior parte do tempo" }
+      ]
+    },
+    {
+      id: "concern",
+      say: ["Anotado.", face ? "<b>O que mais te incomoda</b> quando você se olha no espelho?" : "<b>O que mais te incomoda</b> na pele dessa região?"],
+      opts: AREAS[area].concerns.map(k => ({ v: k, ic: CONCERN[k].ic, t: CONCERN[k].opt }))
+    },
+    {
+      id: "sens",
+      say: ["Última pergunta 🙏", "Sua pele <b>arde ou fica vermelha</b> quando você testa um produto novo?"],
+      opts: [
+        { v: "sim", ic: "🔥", t: "Sim, quase sempre" },
+        { v: "asvezes", ic: "🌡️", t: "Às vezes" },
+        { v: "nao", ic: "🛡️", t: "Quase nunca" }
+      ]
+    }
+  ];
+}
 
 const TYPE_LABEL = { oleosa: "Oleosa", mista: "Mista", seca: "Seca", normal: "Normal" };
 const CONCERN = {
-  acne:     { area: "Zona T e queixo", label: "Acne e cravos",        zone: "zona T e no queixo",              chip: "Inflamação ativa",
+  acne:     { ic: "🔴", opt: "Espinhas e cravos", hit: { tex: 40 }, area: "Zona T e queixo", label: "Acne e cravos",        zone: "zona T e no queixo",              chip: "Inflamação ativa",
               text: "encontrei sinais de cravos e pequenas inflamações concentrados na {zone}. É um padrão que eu vejo muito em quem tem pele {tipo}." },
-  manchas:  { area: "Maçãs do rosto", label: "Manchas",              zone: "maçãs do rosto e na testa",        chip: "Tom irregular",
+  manchas:  { ic: "🟤", opt: "Manchas e marcas", hit: { uni: 38 }, area: "Maçãs do rosto", label: "Manchas",              zone: "maçãs do rosto e na testa",        chip: "Tom irregular",
               text: "o tom da sua pele está irregular, com manchinhas mais visíveis nas {zone}. Isso costuma vir de sol e de marcas antigas que a pele não conseguiu clarear sozinha." },
-  poros:    { area: "Nariz e bochechas", label: "Poros dilatados",      zone: "nariz e na parte central das bochechas", chip: "Poros aparentes",
+  poros:    { ic: "🔍", opt: "Poros dilatados", hit: { tex: 40 }, area: "Nariz e bochechas", label: "Poros dilatados",      zone: "nariz e na parte central das bochechas", chip: "Poros aparentes",
               text: "seus poros estão mais abertos no {zone}. Na pele {tipo} isso piora quando a limpeza não é a certa." },
-  linhas:   { area: "Olhos e testa", label: "Linhas finas",         zone: "contorno dos olhos e na testa",     chip: "Perda de firmeza",
+  linhas:   { ic: "〰️", opt: "Linhas finas e rugas", hit: { tex: 47 }, area: "Olhos e testa", label: "Linhas finas",         zone: "contorno dos olhos e na testa",     chip: "Perda de firmeza",
               text: "aparecem linhas finas no {zone}. A boa notícia é que nessa fase elas ainda respondem muito bem à hidratação profunda." },
-  olheiras: { area: "Abaixo dos olhos", label: "Olheiras",             zone: "região abaixo dos olhos",           chip: "Área dos olhos",
+  olheiras: { ic: "👁️", opt: "Olheiras e inchaço", hit: { uni: 52 }, area: "Abaixo dos olhos", label: "Olheiras",             zone: "região abaixo dos olhos",           chip: "Área dos olhos",
               text: "a {zone} está mais escura e um pouco inchada em relação ao resto do rosto. Isso deixa a expressão com cara de cansaço." },
-  opaca:    { area: "Bochechas e testa", label: "Falta de viço",        zone: "bochechas e na testa",              chip: "Pouca luminosidade",
-              text: "sua pele está refletindo pouca luz, principalmente nas {zone}. É aquele aspecto de pele \"apagada\" que nenhuma base resolve." }
+  opaca:    { ic: "✨", opt: "Pele sem viço, opaca", hit: { lum: 30 }, area: "Bochechas e testa", label: "Falta de viço",        zone: "bochechas e na testa",              chip: "Pouca luminosidade",
+              text: "sua pele está refletindo pouca luz, principalmente nas {zone}. É aquele aspecto de pele \"apagada\" que nenhuma base resolve." },
+
+  // corpo
+  manchas_corpo: { ic: "🟤", opt: "Manchas e marcas", hit: { uni: 36 }, label: "Manchas", chip: "Tom irregular",
+                   text: "o tom da pele {where} está irregular, com manchinhas que costumam vir de sol, depilação ou marcas antigas que a pele não conseguiu clarear sozinha." },
+  estrias:       { ic: "〰️", opt: "Estrias", hit: { tex: 42 }, label: "Estrias", chip: "Marcas na textura",
+                   text: "aparecem estrias {where}. É uma pele que pede nutrição e hidratação todos os dias, não só de vez em quando." },
+  celulite:      { ic: "🍊", opt: "Celulite", hit: { tex: 40 }, label: "Celulite", chip: "Textura irregular",
+                   text: "a pele {where} tem aquele aspecto de casca de laranja. Esfoliação e hidratação na rotina certa deixam a textura bem mais uniforme." },
+  aspereza:      { ic: "🌵", opt: "Pele áspera ou com bolinhas", hit: { tex: 36 }, label: "Pele áspera", chip: "Queratina acumulada",
+                   text: "a pele {where} está áspera, com bolinhas parecidas com pele de galinha. Isso é queratina acumulada na saída dos poros." },
+  ressecamento:  { ic: "🍂", opt: "Ressecamento e descamação", hit: { hid: 26 }, label: "Ressecamento", chip: "Barreira fraca",
+                   text: "a pele {where} está ressecada e sem brilho, com sinais de descamação. É uma pele que perde água rápido demais." },
+  flacidez:      { ic: "🫧", opt: "Flacidez", hit: { tex: 48, lum: 48 }, label: "Flacidez", chip: "Perda de firmeza",
+                   text: "a pele {where} está com menos firmeza e um pouco fina. Hidratação profunda e nutrição fazem muita diferença na aparência dela." },
+  pelos:         { ic: "📍", opt: "Pelos encravados", hit: { tex: 42, uni: 50 }, label: "Pelos encravados", chip: "Foliculite",
+                   text: "vejo pontinhos e pelos encravados {where}, bem comum depois de depilar. A pele precisa ser esfoliada com cuidado pro pelo sair sem inflamar." },
+  acne_costas:   { ic: "🔴", opt: "Espinhas e cravos", hit: { tex: 40 }, label: "Espinhas no corpo", chip: "Inflamação ativa",
+                   text: "encontrei espinhas e cravos {where}. Suor, roupa apertada e resto de creme de cabelo no banho pioram muito esse quadro." },
+  escurecimento: { ic: "🌑", opt: "Pele escurecida", hit: { uni: 30 }, label: "Áreas escurecidas", chip: "Tom mais escuro",
+                   text: "a pele {where} está mais escura que o resto do corpo. Atrito, depilação e desodorante costumam ser os culpados." },
+  rachaduras:    { ic: "🦶", opt: "Rachaduras e calos", hit: { hid: 24, tex: 34 }, label: "Rachaduras", chip: "Pele grossa",
+                   text: "a pele {where} está grossa e com rachaduras, principalmente nos calcanhares e nas pontas dos dedos." },
+  maos_idade:    { ic: "🤲", opt: "Mãos com aspecto envelhecido", hit: { lum: 40, uni: 50 }, label: "Mãos envelhecidas", chip: "Perda de viço",
+                   text: "as mãos estão com aspecto mais fino, com manchinhas e linhas. São a parte do corpo que mais mostra a idade, e quase ninguém cuida delas." }
 };
 
 /* ---------- utilidades ---------- */
@@ -400,35 +458,58 @@ function intro() {
       </div>
       <div class="eyebrow">Teste de pele gratuito</div>
       <h1>Descubra o que a sua pele está pedindo</h1>
-      <p class="muted">Me mande uma selfie e eu te digo o tipo da sua pele, o que está atrapalhando e qual receita do meu eBook eu usaria no seu lugar.</p>
+      <p class="muted">Escolha a parte da pele que você quer analisar, me mande uma foto e eu te mostro o que está acontecendo com ela.</p>
       <ol class="steps">
-        <li><span class="n">1</span><span>Você envia uma selfie sem maquiagem</span></li>
+        <li><span class="n">1</span><span>Você escolhe a área e envia uma foto</span></li>
         <li><span class="n">2</span><span>Responde 3 perguntas rápidas</span></li>
-        <li><span class="n">3</span><span>Recebe sua análise e a receita indicada</span></li>
+        <li><span class="n">3</span><span>Recebe o resultado da sua análise</span></li>
       </ol>
       <button class="btn" id="start">Começar meu teste</button>
       <p class="small muted">Leva menos de 1 minuto</p>
     </section>`);
-  document.getElementById("start").onclick = upload;
+  document.getElementById("start").onclick = chooseArea;
 }
 
-/* ---------- 2. foto ---------- */
-function upload() {
+/* ---------- 2. área ---------- */
+function chooseArea() {
   go(`
-    ${header(1, 5)}
-    ${bubbles(["Oi! Eu sou o Han 👋", "Pra eu analisar direitinho, tira uma <b>selfie de frente</b>, com o rosto limpo e em um lugar bem iluminado."])}
+    ${header(1, 6)}
+    ${bubbles(["Oi! Eu sou o Han 👋", "<b>Qual parte da sua pele</b> você quer que eu analise?"])}
+    <div class="opts">
+      ${Object.entries(AREAS).map(([k, a]) => `<button class="opt${state.area === k ? " sel" : ""}" data-v="${k}"><span class="ic" aria-hidden="true">${a.ic}</span><span>${a.label}<small>${a.sub}</small></span></button>`).join("")}
+    </div>
+    <div class="center"><button class="ghost" id="back">Voltar</button></div>`);
+  app.querySelectorAll(".opt").forEach(b => b.onclick = async () => {
+    app.querySelectorAll(".opt").forEach(x => x.classList.remove("sel"));
+    b.classList.add("sel");
+    if (state.area !== b.dataset.v) { state.photoUrl = null; state.answers = {}; } // outra área, outra foto
+    state.area = b.dataset.v;
+    await wait(reduced ? 0 : 280);
+    upload();
+  });
+  document.getElementById("back").onclick = intro;
+}
+
+/* ---------- 3. foto ---------- */
+function upload() {
+  const face = AREAS[state.area].face;
+  go(`
+    ${header(2, 6)}
+    ${bubbles(face
+      ? ["Perfeito! Pra eu analisar direitinho, tira uma <b>selfie de frente</b>, com o rosto limpo e em um lugar bem iluminado."]
+      : [`Perfeito! Agora tira uma <b>foto de perto</b> da região que te incomoda (${AREAS[state.area].label.toLowerCase()}), com a pele limpa e em um lugar bem iluminado.`])}
     <label class="drop" id="drop" for="photoGallery">
       <div class="ph" id="ph">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4.5 20.5c1.2-3.6 4-5.5 7.5-5.5s6.3 1.9 7.5 5.5"/></svg>
-        <b style="color:var(--ink)">Sua selfie aparece aqui</b>
+        <b style="color:var(--ink)">Sua ${face ? "selfie" : "foto"} aparece aqui</b>
         <span class="small">Escolha uma das opções abaixo</span>
       </div>
     </label>
     <div class="picks">
       <label class="pick main" for="photoCamera">
-        <input type="file" id="photoCamera" class="vh" accept="image/*" capture="user">
+        <input type="file" id="photoCamera" class="vh" accept="image/*" capture="${face ? "user" : "environment"}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.6l1.4-2h7l1.4 2h1.6A2.5 2.5 0 0 1 21 8.5v9A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.6"/></svg>
-        <span id="camTxt">Tirar selfie</span>
+        <span id="camTxt">${face ? "Tirar selfie" : "Tirar foto"}</span>
         <small>Abre a câmera</small>
       </label>
       <label class="pick" for="photoGallery">
@@ -440,11 +521,12 @@ function upload() {
     </div>
     <div class="tips">
       <div><b>☀️ Luz</b>natural, de frente</div>
-      <div><b>🧼 Rosto</b>sem maquiagem</div>
-      <div><b>📐 Ângulo</b>reto, sem filtro</div>
+      ${face ? `<div><b>🧼 Rosto</b>sem maquiagem</div>` : `<div><b>🧴 Pele</b>limpa, sem creme</div>`}
+      ${face ? `<div><b>📐 Ângulo</b>reto, sem filtro</div>` : `<div><b>🔍 Foco</b>de perto, nítida</div>`}
     </div>
     <p class="err" id="err" hidden></p>
     <button class="btn" id="next" disabled>Enviar foto para análise</button>
+    <div class="center"><button class="ghost" id="back">Trocar a área</button></div>
     <p class="privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Sua foto fica só no seu aparelho. Ela não é enviada nem salva em lugar nenhum.</p>`);
 
   const inputs = ["photoCamera", "photoGallery"].map(id => document.getElementById(id));
@@ -456,7 +538,7 @@ function upload() {
     drop.classList.add("has");
     drop.querySelector("img")?.remove();
     const prev = document.createElement("img");
-    prev.src = url; prev.alt = "Sua selfie";
+    prev.src = url; prev.alt = "Sua foto";
     drop.appendChild(prev);
     document.getElementById("ph").hidden = true;
     document.querySelector(".pick.main")?.classList.remove("main"); // o destaque passa para "Enviar"
@@ -488,6 +570,7 @@ function upload() {
   };
   inputs.forEach(input => input.onchange = () => onPick(input));
   next.onclick = () => question(0);
+  document.getElementById("back").onclick = chooseArea;
 }
 
 /* Lê a foto sem depender de blob: URL, reduz para no máx. 1280px e converte para JPEG.
@@ -554,11 +637,12 @@ function photoSeed(source, file) {
   } catch (e) { return (file.size * 2654435761) >>> 0; }
 }
 
-/* ---------- 3. perguntas ---------- */
+/* ---------- 4. perguntas ---------- */
 function question(i) {
+  const QUESTIONS = questionsFor(state.area);
   const q = QUESTIONS[i];
   go(`
-    ${header(i + 2, 5)}
+    ${header(i + 3, 6)}
     ${bubbles(q.say)}
     <div class="q"><div class="opts">
       ${q.opts.map(o => `<button class="opt${state.answers[q.id] === o.v ? " sel" : ""}" data-v="${o.v}"><span class="ic" aria-hidden="true">${o.ic}</span><span>${o.t}${o.s ? `<small>${o.s}</small>` : ""}</span></button>`).join("")}
@@ -574,8 +658,16 @@ function question(i) {
   document.getElementById("back").onclick = () => i === 0 ? upload() : question(i - 1);
 }
 
-/* ---------- 4. análise ---------- */
-const STEPS = [
+/* ---------- 5. análise ---------- */
+const STEPS_BODY = [
+  "Detectando a área da pele",
+  "Mapeando textura e relevo",
+  "Medindo hidratação e oleosidade",
+  "Avaliando tom e manchas",
+  "Verificando marcas e irregularidades",
+  "Escolhendo a receita ideal pra você"
+];
+const STEPS_FACE = [
   "Detectando o rosto",
   "Mapeando zona T e bochechas",
   "Medindo oleosidade e hidratação",
@@ -585,18 +677,20 @@ const STEPS = [
 ];
 
 async function analyze() {
+  const face = AREAS[state.area].face;
+  const STEPS = face ? STEPS_FACE : STEPS_BODY;
   go(`
-    ${header(5, 5)}
+    ${header(6, 6)}
     ${bubbles(["Perfeito! Agora deixa comigo. Estou analisando sua pele ponto por ponto… 🔬"])}
     <div class="scan">
-      <img src="${state.photoUrl}" alt="Sua selfie sendo analisada">
+      <img src="${state.photoUrl}" alt="Sua foto sendo analisada">
       <canvas id="mesh"></canvas>
       <div class="line"></div>
       <div class="tag"><span id="tagtxt">Iniciando análise</span><b id="pct">0%</b></div>
     </div>
     <ul class="checks" id="checks">${STEPS.map(s => `<li>${s}</li>`).join("")}</ul>`);
 
-  const stop = drawMesh(document.getElementById("mesh"), true);
+  const stop = drawMesh(document.getElementById("mesh"), face);
   const lis = [...document.querySelectorAll("#checks li")];
   const pct = document.getElementById("pct"), tag = document.getElementById("tagtxt");
   const per = reduced ? 150 : 1100;
@@ -618,17 +712,25 @@ async function analyze() {
   result();
 }
 
-/* malha facial decorativa, posicionada no centro da foto */
-function drawMesh(canvas, animate) {
+/* malha decorativa: no rosto segue o formato do rosto, no corpo cobre a foto toda */
+function drawMesh(canvas, face) {
+  const animate = true;
   const ctx = canvas.getContext("2d");
   const r = rng(state.seed || 7);
   const pts = [];
+  if (!face) {
+    for (let y = 0; y < 7; y++) for (let x = 0; x < 6; x++)
+      pts.push([.1 + x * .16 + (r() - .5) * .08, .08 + y * .13 + (r() - .5) * .06]);
+    pts.sort(() => r() - .5);
+  } else {
   // contorno oval + olhos + nariz + boca, em coordenadas 0..1
   for (let k = 0; k < 28; k++) { const a = k / 28 * Math.PI * 2; pts.push([.5 + Math.cos(a) * .27, .44 + Math.sin(a) * .34]); }
   [[.38, .38], [.62, .38]].forEach(([cx, cy]) => { for (let k = 0; k < 8; k++) { const a = k / 8 * Math.PI * 2; pts.push([cx + Math.cos(a) * .06, cy + Math.sin(a) * .025]); } });
   [[.5, .42], [.5, .48], [.46, .53], [.54, .53], [.5, .545]].forEach(p => pts.push(p));
   for (let k = 0; k < 10; k++) { const a = k / 10 * Math.PI * 2; pts.push([.5 + Math.cos(a) * .085, .63 + Math.sin(a) * .03]); }
   for (let k = 0; k < 26; k++) pts.push([.3 + r() * .4, .22 + r() * .5]);
+  }
+  const reach = face ? .11 : .2;
   let raf, t = 0, alive = true;
   function frame() {
     const w = canvas.clientWidth, h = canvas.clientHeight, dpr = devicePixelRatio || 1;
@@ -636,11 +738,12 @@ function drawMesh(canvas, animate) {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
     const shown = animate ? Math.min(pts.length, Math.floor(t / 2)) : pts.length;
-    ctx.strokeStyle = "rgba(255,255,255,.28)"; ctx.lineWidth = .7;
+    ctx.strokeStyle = "rgba(255,255,255,.5)"; ctx.lineWidth = .8;
+    ctx.shadowColor = "rgba(90,23,38,.55)"; ctx.shadowBlur = 3;
     ctx.beginPath();
     for (let i = 0; i < shown; i++) for (let j = i + 1; j < shown; j++) {
       const dx = (pts[i][0] - pts[j][0]) * w, dy = (pts[i][1] - pts[j][1]) * h;
-      if (dx * dx + dy * dy < (w * .11) ** 2) { ctx.moveTo(pts[i][0] * w, pts[i][1] * h); ctx.lineTo(pts[j][0] * w, pts[j][1] * h); }
+      if (dx * dx + dy * dy < (w * reach) ** 2) { ctx.moveTo(pts[i][0] * w, pts[i][1] * h); ctx.lineTo(pts[j][0] * w, pts[j][1] * h); }
     }
     ctx.stroke();
     for (let i = 0; i < shown; i++) {
@@ -655,7 +758,7 @@ function drawMesh(canvas, animate) {
   return () => { alive = false; cancelAnimationFrame(raf); };
 }
 
-/* ---------- 5. resultado ---------- */
+/* ---------- 6. resultado ---------- */
 function buildResult() {
   const r = rng(state.seed ^ 0x9e3779b9);
   const j = n => Math.round(n + (r() - .5) * 12);
@@ -664,11 +767,9 @@ function buildResult() {
     oleosa: { hid: 58, ole: 84 }, mista: { hid: 52, ole: 66 }, seca: { hid: 31, ole: 18 }, normal: { hid: 70, ole: 42 }
   }[tipo];
   const m = {
-    hid: base.hid, ole: base.ole,
-    uni: concern === "manchas" ? 38 : concern === "olheiras" ? 52 : 68,
-    tex: concern === "poros" || concern === "acne" ? 40 : concern === "linhas" ? 47 : 66,
-    lum: concern === "opaca" ? 30 : 58,
-    sen: sens === "sim" ? 78 : sens === "asvezes" ? 52 : 24
+    hid: base.hid, ole: base.ole, uni: 68, tex: 66, lum: 58,
+    sen: sens === "sim" ? 78 : sens === "asvezes" ? 52 : 24,
+    ...CONCERN[concern].hit
   };
   Object.keys(m).forEach(k => m[k] = clamp(j(m[k]), 8, 96));
 
@@ -685,7 +786,7 @@ function level(val) {
   return ["lvl-bad", "Precisa cuidar", "var(--warn)"];
 }
 
-/* onde o problema aparece no rosto (coordenadas 0..1 sobre a foto) */
+/* onde o problema aparece no rosto (coordenadas 0..1 sobre a foto); no corpo os pontos são sorteados */
 const ZONES = {
   acne: [[.5, .3], [.5, .47], [.5, .7]], manchas: [[.33, .5], [.67, .5], [.5, .27]],
   poros: [[.5, .47], [.37, .53], [.63, .53]], linhas: [[.32, .39], [.68, .39], [.5, .25]],
@@ -699,17 +800,18 @@ function result() {
   const c = CONCERN[concern];
   const { m, recipe, score, name } = buildResult();
   const tipoTxt = TYPE_LABEL[tipo].toLowerCase();
-  const diag = c.text.replace("{zone}", c.zone).replace("{tipo}", tipoTxt);
+  const diag = c.text.replace("{zone}", c.zone).replace("{tipo}", tipoTxt).replace("{where}", AREAS[state.area].where);
   const meters = [
     ["Hidratação", m.hid],
     ["Controle de oleosidade", 100 - m.ole],
     ["Uniformidade do tom", m.uni],
-    ["Textura e poros", m.tex],
+    [AREAS[state.area].face ? "Textura e poros" : "Textura", m.tex],
     ["Luminosidade", m.lum],
     ["Resistência à irritação", 100 - m.sen]
   ].sort((a, b) => a[1] - b[1]);
   const alerts = meters.filter(([, v]) => v < 65).length;
-  const zones = ZONES[concern];
+  const pr = rng(state.seed ^ 0x51ed27);
+  const zones = ZONES[concern] || [0, 1, 2].map(i => [.3 + pr() * .4, .28 + i * .14 + pr() * .06]);
   const [lx, ly] = zones[0];
   const labelPos = lx <= .5 ? `left:calc(${lx * 100}% + 18px)` : `right:calc(${(1 - lx) * 100}% + 18px)`;
   const gaugeCol = score >= 65 ? "#9fd3b2" : score >= 50 ? "#e8d4a8" : "#f3b48e";
@@ -724,14 +826,14 @@ function result() {
     </div>
 
     <section class="res-photo" aria-label="Seu resultado">
-      <img src="${state.photoUrl}" alt="Sua selfie com as áreas analisadas">
+      <img src="${state.photoUrl}" alt="Sua foto com as áreas analisadas">
       ${zones.map(([x, y]) => `<span class="pin" style="left:${x * 100}%;top:${y * 100}%"></span>`).join("")}
       <span class="pin-label" style="${labelPos};top:${ly * 100}%">${c.label}</span>
       <div class="photo-foot">
         <div>
           <div class="eyebrow">Seu resultado</div>
           <h2>${name}</h2>
-          <span class="sub">${c.chip} · ${c.area}</span>
+          <span class="sub">${c.chip} · ${c.area || AREAS[state.area].short}</span>
         </div>
         <div class="gauge" aria-label="Nota da pele ${score} de 100">
           <svg viewBox="0 0 78 78"><circle class="g-track" cx="39" cy="39" r="32"/><circle class="g-val" id="gval" cx="39" cy="39" r="32" stroke="${gaugeCol}" stroke-dasharray="${C}" stroke-dashoffset="${C}" data-off="${C * (1 - score / 100)}"/></svg>
@@ -776,21 +878,28 @@ function result() {
       <div class="book">
         <img src="${COVER}" alt="Capa do eBook Pele de Porcelana">
         <div>
-          <div class="eyebrow">eBook do Han</div>
-          <h2 style="font-size:22px">Pele de Porcelana</h2>
-          <ul>
-            <li class="hl">Sua receita nº ${recipe} completa</li>
-            <li>+50 receitas coreanas naturais</li>
-            <li>Máscaras, tônicos e séruns</li>
-            <li>Rotina de beleza passo a passo</li>
-          </ul>
+          <div class="eyebrow">Guia do Han</div>
+          <h2>Pele de Porcelana</h2>
+          <p class="small muted">Receitas coreanas para cuidados com a pele</p>
         </div>
       </div>
+      <p class="lead">Sua análise mostrou que a sua pele precisa de cuidado com <b>${c.label.toLowerCase()}</b>. No eBook eu te entrego a <b>receita nº ${recipe} completa</b> e toda a rotina que eu uso pra deixar a pele mais lisa, iluminada e saudável.</p>
+      <ul class="gets">
+        <li class="hl"><span class="gi" aria-hidden="true">🔓</span><div><b>Sua receita nº ${recipe}, liberada</b><span>Ingredientes, quantidades e o modo de usar, do jeito que eu faço.</span></div></li>
+        <li><span class="gi" aria-hidden="true">🌸</span><div><b>+50 receitas naturais coreanas</b><span>Máscaras, tônicos e séruns pro rosto e pro corpo.</span></div></li>
+        <li><span class="gi" aria-hidden="true">📋</span><div><b>Rotina de beleza passo a passo</b><span>A ordem certa de usar cada receita pra aproveitar tudo o que ela tem.</span></div></li>
+        <li><span class="gi" aria-hidden="true">🏠</span><div><b>Tudo feito em casa</b><span>Rituais da beleza coreana sem gastar com uma prateleira de produtos caros.</span></div></li>
+      </ul>
+      <figure class="quote">
+        <img src="${AVATAR}" alt="">
+        <figcaption>“Juntei nesse guia tudo o que eu faço na minha própria pele. Comece hoje mesmo pela receita nº ${recipe}.”<cite>@${CONFIG.handle}</cite></figcaption>
+      </figure>
       ${priceHtml}
-      <a class="btn" href="${CONFIG.checkoutUrl}" target="_blank" rel="noopener">Comprar o eBook agora</a>
+      <a class="btn gold" href="${CONFIG.checkoutUrl}" target="_blank" rel="noopener">Quero o eBook com a receita nº ${recipe}</a>
+      <p class="fine">eBook digital · leia no celular ou no computador</p>
     </section>
 
-    <div class="center"><button class="ghost" id="redo">Refazer o teste com outra foto</button></div>
+    <div class="center"><button class="ghost" id="other">Analisar outra parte do corpo</button> <button class="ghost" id="redo">Refazer com outra foto</button></div>
     <p class="fine">Análise estética de caráter informativo. Não substitui a avaliação de um dermatologista.</p>
 
     <div class="sticky" id="sticky" aria-hidden="true">
@@ -821,6 +930,10 @@ function result() {
   document.getElementById("redo").onclick = () => {
     io.disconnect(); app.classList.remove("has-sticky");
     state.answers = {}; upload();
+  };
+  document.getElementById("other").onclick = () => {
+    io.disconnect(); app.classList.remove("has-sticky");
+    state.answers = {}; state.photoUrl = null; state.area = null; chooseArea();
   };
 }
 
