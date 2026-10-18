@@ -108,6 +108,78 @@ p { margin: 0; }
 .btn.gold:hover { background: linear-gradient(180deg, #b78d3f, #946b24); }
 .ghost { appearance: none; background: none; border: 0; color: var(--muted); font: 500 14px var(--font-body); cursor: pointer; padding: 8px; text-decoration: underline; text-underline-offset: 3px; }
 
+/* revelação */
+.reveal { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; padding-top: 24px; position: relative; z-index: 1; }
+.rv-check { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; background: var(--ok); color: #fff; box-shadow: 0 0 0 10px #e3f0e8; animation: rv-pop .5s cubic-bezier(.2, 1.4, .4, 1) both; }
+.rv-check svg { width: 40px; height: 40px; }
+@keyframes rv-pop { from { transform: scale(.3); opacity: 0; } to { transform: none; opacity: 1; } }
+.rv-card { display: flex; gap: 12px; align-items: center; text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 10px 16px 10px 10px; max-width: 100%; }
+.rv-card img { flex: none; width: 52px; height: 52px; border-radius: 12px; object-fit: cover; }
+.rv-card div { min-width: 0; display: grid; }
+.rv-card b { font-size: 16px; }
+.rv-card span { font-size: 13px; color: var(--muted); }
+.rv-num { font-family: var(--font-display); color: var(--wine); font-size: 96px; line-height: 1; font-variant-numeric: tabular-nums; animation: rv-pop .6s .25s cubic-bezier(.2, 1.4, .4, 1) both; }
+.rv-num small { font-size: 32px; vertical-align: top; color: var(--gold); margin-right: 4px; }
+.petals { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.petals i { position: absolute; top: -20px; width: 12px; height: 10px; border-radius: 10px 0 10px 0; background: var(--petal-deep); opacity: .8; animation: fall linear infinite; }
+.petals i:nth-child(3n) { background: var(--gold-soft); width: 9px; height: 8px; }
+@keyframes fall { to { transform: translate(40px, 105vh) rotate(320deg); } }
+
+/* diagnóstico, como funciona, dúvidas */
+.risk { display: block; color: var(--warn); }
+.risk b { color: var(--warn); }
+.how { display: grid; gap: 10px; padding: 14px; border-radius: 14px; background: var(--porcelain); border: 1px solid var(--line); }
+.how h3 { margin: 0; font-size: 15px; }
+.how ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; counter-reset: how; }
+.how li { counter-increment: how; display: grid; grid-template-columns: 26px 1fr; column-gap: 10px; font-size: 14px; line-height: 1.4; }
+.how li::before { content: counter(how); grid-row: span 2; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--wine); color: #fff; font-weight: 700; font-size: 13px; }
+.how li span { color: var(--muted); }
+.faq { gap: 4px; }
+.faq h3 { margin: 0 0 6px; font-size: 16px; }
+.faq details { border-top: 1px solid var(--line); }
+.faq summary { cursor: pointer; padding: 12px 0; font-weight: 500; font-size: 15px; list-style: none; display: flex; justify-content: space-between; gap: 10px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--wine); font-size: 20px; line-height: 1; }
+.faq details[open] summary::after { content: "–"; }
+.faq summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.faq details p { margin: 0 0 12px; font-size: 14px; color: var(--muted); line-height: 1.5; }
+.faq .btn { margin-top: 10px; }
+
+/* dicas grátis + garantia */
+.tips-free { gap: 12px; }
+.tf-head { display: flex; gap: 12px; align-items: center; }
+.tf-head img { flex: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.tf-head div { min-width: 0; display: grid; gap: 1px; }
+.tf-head h3 { margin: 0; font-size: 16px; }
+.tf-head span { font-size: 13px; color: var(--muted); line-height: 1.35; }
+.tips-free ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; counter-reset: tip; }
+.tips-free li { counter-increment: tip; display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; line-height: 1.45; }
+.tips-free li::before { content: counter(tip); flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--petal); color: var(--wine); font-family: var(--font-display); font-size: 14px; }
+.guarantee { display: flex; gap: 12px; align-items: flex-start; padding: 12px; border-radius: 14px; background: #e3f0e8; color: var(--ink); }
+.guarantee svg { flex: none; width: 30px; height: 30px; color: var(--ok); }
+.guarantee div { min-width: 0; display: grid; gap: 2px; }
+.guarantee b { font-size: 15px; color: var(--ok); }
+.guarantee span { font-size: 13.5px; line-height: 1.4; }
+.price span { flex-basis: 100%; text-align: center; font-size: 13px; color: var(--muted); }
+
+/* depoimentos */
+.testi { width: 100%; display: grid; gap: 10px; text-align: left; margin-top: 10px; }
+.testi-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.testi-head h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 19px; color: var(--wine); }
+.testi-head span { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.testi-track { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; scrollbar-width: thin; }
+.testi-card { flex: 0 0 86%; scroll-snap-align: start; margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px; display: grid; gap: 8px; align-content: start; }
+.testi-card:only-child { flex-basis: 100%; }
+.testi-card figcaption { display: flex; gap: 10px; align-items: center; min-width: 0; }
+.testi-card img, .testi-ini { flex: none; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--petal); }
+.testi-ini { display: grid; place-items: center; background: var(--petal); color: var(--wine); font-family: var(--font-display); font-size: 19px; }
+.testi-card figcaption div { min-width: 0; display: grid; }
+.testi-card figcaption b { font-size: 15px; }
+.testi-card figcaption span { font-size: 12.5px; color: var(--muted); }
+.testi-stars { color: var(--gold); letter-spacing: 2px; font-size: 14px; }
+.testi-stars i { font-style: normal; color: var(--line); }
+.testi-card blockquote { margin: 0; font-size: 14.5px; line-height: 1.5; }
+
 /* upload */
 .drop {
   position: relative; display: grid; place-items: center; text-align: center; gap: 8px;
@@ -186,7 +258,7 @@ p { margin: 0; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* resultado */
-.res-photo { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 5; max-width: 100%; background: var(--ink); box-shadow: 0 14px 34px rgba(90, 23, 38, .18); }
+.res-photo { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 1 / 1; max-width: 100%; background: var(--ink); box-shadow: 0 14px 34px rgba(90, 23, 38, .18); }
 .res-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .res-photo::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(180deg, transparent, rgba(42, 20, 26, .82)); pointer-events: none; }
 .pin { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; border: 2px solid #fff; background: rgba(233, 185, 194, .45); z-index: 1; }
@@ -310,9 +382,18 @@ const CONFIG = {
   checkoutUrl: "https://pay.wiapy.com/1ybmznbcGNam",
   price: "",                   // ex.: "R$ 27,90" (vazio = não mostra preço)
   priceOld: "",                // ex.: "R$ 67,00" (preço riscado, opcional)
+  guaranteeDays: 7,            // garantia mostrada no resultado (0 = esconde). Compra online no Brasil já tem 7 dias pelo art. 49 do CDC
+  paymentInfo: "",             // ex.: "Pix ou cartão em até 12x · acesso imediato no e-mail" (vazio = não mostra)
+  metaPixelId: "",             // ID do Pixel da Meta, para medir quem chega no resultado e clica em comprar (vazio = desligado)
   handle: "han.jaeyou",
   name: "Han Jae-yun",
   followers: "44 mil",
+  // Depoimentos de clientes (aparecem na tela inicial; lista vazia = bloco escondido).
+  // avatar: caminho da foto ao lado do index.html, ex. "fotos/carla.jpg" (vazio = mostra a inicial do nome)
+  // stars: de 1 a 5 (opcional) · detail: frase curta, ex. "4 semanas com a receita 18" (opcional)
+  testimonials: [
+    // { name: "Nome", detail: "", text: "Depoimento da cliente aqui", avatar: "", stars: 5 },
+  ],
   totalRecipes: 50,            // o número sorteado vai de 1 até aqui
   // Opcional: se quiser que cada problema aponte só para receitas
   // que existem de verdade no eBook, liste os números aqui.
@@ -425,6 +506,48 @@ const CONCERN = {
                    text: "as mãos estão com aspecto mais fino, com manchinhas e linhas. São a parte do corpo que mais mostra a idade, e quase ninguém cuida delas." }
 };
 
+/* o que costuma acontecer se a pessoa não cuidar (mostrado no diagnóstico) */
+const RISK = {
+  acne: "Espinha inflamada por muito tempo, ou espremida, pode deixar marca e cicatriz. Quanto antes cuidar, menos marca fica.",
+  manchas: "Sem cuidado, o sol do dia a dia faz essas manchas escurecerem ainda mais.",
+  poros: "Oleosidade acumulada nos poros vira cravo e deixa o poro cada vez mais aparente.",
+  linhas: "Pele sem hidratação e sem proteção marca as linhas mais rápido.",
+  olheiras: "Noites mal dormidas e pele ressecada deixam a olheira ainda mais marcada.",
+  opaca: "Células mortas acumuladas deixam a pele cada vez mais apagada e com textura irregular.",
+  manchas_corpo: "Sol e atrito sem proteção fazem essas manchas escurecerem mais.",
+  estrias: "Pele ressecada perde elasticidade, e as marcas ficam mais aparentes.",
+  celulite: "Pele ressecada e sem esfoliação deixa a textura ainda mais marcada.",
+  aspereza: "Sem esfoliação, a queratina continua acumulando e as bolinhas aumentam.",
+  ressecamento: "Pele que fica muito tempo ressecada coça, descama e pode rachar.",
+  flacidez: "Sem hidratação e proteção, a pele perde firmeza mais rápido.",
+  pelos: "Pelo encravado que inflama pode deixar uma mancha escura no lugar.",
+  acne_costas: "Espinhas que inflamam muito podem deixar manchas e marcas nas costas.",
+  escurecimento: "Atrito e irritação todos os dias fazem a região escurecer cada vez mais.",
+  rachaduras: "Rachaduras profundas podem doer e até sangrar se a pele não for hidratada.",
+  maos_idade: "Mãos expostas ao sol e à água sem cuidado ganham mais manchas e linhas."
+};
+
+/* 3 cuidados gratuitos mostrados no resultado, por problema */
+const TIPS = {
+  acne: ["Lave o rosto 2 vezes ao dia com sabonete suave, sem esfregar.", "Não esprema as espinhas: isso deixa marca e espalha a inflamação.", "Troque a fronha pelo menos 2 vezes por semana."],
+  manchas: ["Passe protetor solar todo dia, mesmo em casa e com o tempo nublado.", "Reaplique o protetor a cada 2 ou 3 horas quando ficar no sol.", "Não cutuque espinhas e casquinhas: elas viram mancha."],
+  poros: ["Limpe a pele toda noite para tirar oleosidade e poluição.", "Evite água muito quente no rosto.", "Hidrate mesmo se a pele for oleosa: pele desidratada produz mais óleo."],
+  linhas: ["Use protetor solar todo dia: é o cuidado anti-idade mais importante.", "Hidrate o rosto de manhã e à noite.", "Durma bem e beba água ao longo do dia."],
+  olheiras: ["Tente dormir de 7 a 8 horas, em horários parecidos.", "Faça compressa fria por 5 minutos de manhã para desinchar.", "Passe protetor solar também em volta dos olhos."],
+  opaca: ["Esfolie com delicadeza 1 vez por semana.", "Hidrate logo depois de lavar o rosto.", "Beba água ao longo do dia."],
+  manchas_corpo: ["Passe protetor solar nas partes do corpo que pegam sol.", "Hidrate a pele todos os dias depois do banho.", "Evite depilar com lâmina na pele seca."],
+  estrias: ["Hidrate a região todos os dias, logo depois do banho.", "Espalhe o hidratante com massagem em movimentos circulares.", "Beba água ao longo do dia."],
+  celulite: ["Esfolie a região 1 ou 2 vezes por semana.", "Hidrate logo depois do banho.", "Movimente o corpo: caminhar já ajuda a circulação."],
+  aspereza: ["Esfolie com suavidade 1 ou 2 vezes por semana, sem bucha áspera.", "Hidrate logo depois do banho, com a pele ainda úmida.", "Evite banho muito quente."],
+  ressecamento: ["Prefira banho morno e rápido: água quente resseca.", "Passe hidratante até 3 minutos depois de sair do banho.", "Use sabonete suave, sem perfume forte."],
+  flacidez: ["Hidrate a região todos os dias.", "Passe protetor solar no colo, pescoço e braços.", "Exercícios de força ajudam na firmeza do corpo."],
+  pelos: ["Esfolie a região 1 ou 2 dias antes de depilar.", "Depile no sentido do crescimento do pelo.", "Evite roupa apertada logo depois da depilação."],
+  acne_costas: ["Tome banho logo depois de suar.", "Enxágue bem o condicionador antes de lavar as costas.", "Prefira roupas de algodão."],
+  escurecimento: ["Prefira roupas mais soltas para diminuir o atrito.", "Não esfregue a região com força no banho.", "Prefira desodorante sem álcool."],
+  rachaduras: ["Hidrate os pés à noite e durma de meia.", "Lixe com suavidade 1 vez por semana, com a pele seca.", "Evite andar descalço em piso áspero."],
+  maos_idade: ["Passe protetor solar nas mãos também.", "Hidrate as mãos toda vez que lavar.", "Use luvas para lavar louça e fazer faxina."]
+};
+
 /* ---------- utilidades ---------- */
 function rng(seed) { // mulberry32: mesma foto = mesmo resultado
   let a = seed >>> 0;
@@ -466,8 +589,65 @@ function intro() {
       </ol>
       <button class="btn" id="start">Começar meu teste</button>
       <p class="small muted">Leva menos de 1 minuto</p>
+      ${testimonialsHtml()}
     </section>`);
-  document.getElementById("start").onclick = chooseArea;
+  document.getElementById("start").onclick = () => { track("QuizStart", {}, true); chooseArea(); };
+}
+
+/* Pixel da Meta (só carrega com metaPixelId preenchido) */
+function track(event, data, custom) {
+  try { if (window.fbq) window.fbq(custom ? "trackCustom" : "track", event, data || {}); } catch (e) {}
+}
+(function loadPixel() {
+  if (!CONFIG.metaPixelId) return;
+  !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v;
+    s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+  window.fbq("init", CONFIG.metaPixelId);
+  window.fbq("track", "PageView");
+})();
+
+/* link do checkout levando junto as UTMs do anúncio (utm_source, utm_campaign...) */
+function checkoutHref() {
+  try {
+    const url = new URL(CONFIG.checkoutUrl);
+    new URLSearchParams(location.search).forEach((v, k) => { if (/^(utm_|src|sck|fbclid)/.test(k) && !url.searchParams.has(k)) url.searchParams.set(k, v); });
+    return url.toString();
+  } catch (e) { return CONFIG.checkoutUrl; }
+}
+
+/* preço por receita, ex.: "R$ 27,90" e 50 receitas -> "menos de R$ 0,56 por receita" */
+function perRecipe() {
+  const n = parseFloat(String(CONFIG.price).replace(/[^\d,.]/g, "").replace(/\.(?=\d{3})/g, "").replace(",", "."));
+  if (!n || !CONFIG.totalRecipes) return "";
+  const v = Math.ceil(n / CONFIG.totalRecipes * 100) / 100;
+  return `menos de R$ ${v.toFixed(2).replace(".", ",")} por receita`;
+}
+
+function esc(s) { return String(s ?? "").replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch])); }
+
+function testimonialsHtml() {
+  const list = (CONFIG.testimonials || []).filter(d => d && d.name && d.text);
+  if (!list.length) return "";
+  return `
+    <section class="testi" aria-label="Depoimentos">
+      <div class="testi-head"><h3>Quem já usa as receitas</h3>${list.length > 1 ? `<span>Deslize para ver mais →</span>` : ""}</div>
+      <div class="testi-track">
+        ${list.map(d => {
+          const stars = Math.max(0, Math.min(5, Math.round(+d.stars || 0)));
+          return `
+          <figure class="testi-card">
+            <figcaption>
+              ${d.avatar ? `<img src="${esc(d.avatar)}" alt="" loading="lazy">` : `<span class="testi-ini" aria-hidden="true">${esc(d.name.trim()[0].toUpperCase())}</span>`}
+              <div><b>${esc(d.name)}</b>${d.detail ? `<span>${esc(d.detail)}</span>` : ""}</div>
+            </figcaption>
+            ${stars ? `<div class="testi-stars" aria-label="${stars} de 5 estrelas">${"★".repeat(stars)}<i>${"★".repeat(5 - stars)}</i></div>` : ""}
+            <blockquote>“${esc(d.text)}”</blockquote>
+          </figure>`;
+        }).join("")}
+      </div>
+      <p class="fine">Resultados variam de pessoa para pessoa.</p>
+    </section>`;
 }
 
 /* ---------- 2. área ---------- */
@@ -709,7 +889,34 @@ async function analyze() {
   tag.textContent = "Análise concluída";
   await wait(reduced ? 0 : 600);
   stop();
-  result();
+  reveal();
+}
+
+/* ---------- 5b. revelação: deixa claro que o resultado saiu ---------- */
+function reveal() {
+  const { concern } = state.answers;
+  const c = CONCERN[concern];
+  const { recipe, name } = buildResult();
+  document.title = "✓ Seu resultado está pronto";
+  try { navigator.vibrate && navigator.vibrate([40, 60, 40]); } catch (e) {}
+  go(`
+    <div class="petals" aria-hidden="true">${Array.from({ length: 14 }, (_, i) => `<i style="left:${(i * 7.3 + 3) % 100}%;animation-delay:${(i % 7) * .35}s;animation-duration:${3.2 + (i % 4) * .6}s"></i>`).join("")}</div>
+    <section class="reveal">
+      <div class="rv-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <div class="eyebrow">Análise concluída</div>
+      <h1>Seu resultado está pronto!</h1>
+      <div class="rv-card">
+        <img src="${state.photoUrl}" alt="">
+        <div><b>${name}</b><span>${c.label} · ${c.area || AREAS[state.area].short}</span></div>
+      </div>
+      <p class="muted">Encontrei a receita certa pra você:</p>
+      <div class="rv-num"><small>nº</small>${recipe}</div>
+      <button class="btn gold" id="see">Ver meu resultado completo</button>
+      <p class="small muted">Inclui seu diagnóstico, 3 cuidados grátis e a receita indicada</p>
+    </section>`);
+  const see = document.getElementById("see");
+  see.focus({ preventScroll: true });
+  see.onclick = result;
 }
 
 /* malha decorativa: no rosto segue o formato do rosto, no corpo cobre a foto toda */
@@ -811,13 +1018,18 @@ function result() {
   ].sort((a, b) => a[1] - b[1]);
   const alerts = meters.filter(([, v]) => v < 65).length;
   const pr = rng(state.seed ^ 0x51ed27);
-  const zones = ZONES[concern] || [0, 1, 2].map(i => [.3 + pr() * .4, .28 + i * .14 + pr() * .06]);
+  // as zonas do rosto foram pensadas num quadro 4:5; a foto do resultado é quadrada
+  const zones = (ZONES[concern] ? ZONES[concern].map(([x, y]) => [x, 1.25 * y - .125]) : [0, 1, 2].map(i => [.3 + pr() * .4, .26 + i * .12 + pr() * .05]))
+    .filter(([, y], i) => i === 0 || y <= .6); // não deixa marcador em cima do texto da foto
   const [lx, ly] = zones[0];
   const labelPos = lx <= .5 ? `left:calc(${lx * 100}% + 18px)` : `right:calc(${(1 - lx) * 100}% + 18px)`;
   const gaugeCol = score >= 65 ? "#9fd3b2" : score >= 50 ? "#e8d4a8" : "#f3b48e";
   const C = 2 * Math.PI * 32;
+  const buy = checkoutHref();
+  const per = CONFIG.price ? perRecipe() : "";
   const priceHtml = CONFIG.price
-    ? `<div class="price">${CONFIG.priceOld ? `<s>de ${CONFIG.priceOld}</s>` : ""}<b>${CONFIG.price}</b></div>` : "";
+    ? `<div class="price">${CONFIG.priceOld ? `<s>de ${esc(CONFIG.priceOld)}</s>` : ""}<b>${esc(CONFIG.price)}</b>${per ? `<span>${per}</span>` : ""}</div>` : "";
+  const tips = TIPS[concern] || [];
 
   go(`
     <div class="top">
@@ -850,6 +1062,7 @@ function result() {
 
     ${bubbles([
       `Olhando a sua foto, ${diag}`,
+      ...(RISK[concern] ? [`<span class="risk">⚠️ <b>Atenção:</b> ${RISK[concern]}</span>`] : []),
       `Pra esse caso eu indico a <b>receita nº ${recipe}</b> do meu eBook. É exatamente o que eu faria se a pele fosse minha. 🌸`
     ])}
 
@@ -862,17 +1075,18 @@ function result() {
         <em>Modo de uso</em><i></i><i></i>
         <div class="lock"><span>${LOCK_ICON}Liberada no eBook</span></div>
       </div>
-      <a class="btn gold" href="${CONFIG.checkoutUrl}" target="_blank" rel="noopener">Quero a receita nº ${recipe}</a>
+      <a class="btn gold buy" href="${buy}" target="_blank" rel="noopener">Quero a receita nº ${recipe}</a>
     </section>
 
-    <section class="panel" aria-label="Detalhes da análise">
-      <div class="panel-head"><h3>Detalhes da análise</h3><span>Do que mais precisa de cuidado ao melhor</span></div>
-      ${meters.map(([label, val]) => { const [cls, txt, col] = level(val); return `
-        <div class="meter">
-          <div class="meter-top"><b>${label}</b><span class="pill ${cls}">${txt} · ${val}%</span></div>
-          <div class="track"><i data-w="${val}" style="background:${col}"></i></div>
-        </div>`; }).join("")}
-    </section>
+    ${tips.length ? `
+    <section class="panel tips-free" aria-label="Cuidados para começar hoje">
+      <div class="tf-head">
+        <img src="${AVATAR}" alt="">
+        <div><h3>Comece hoje, de graça</h3><span>3 cuidados que eu faria no seu lugar a partir de hoje</span></div>
+      </div>
+      <ol>${tips.map(x => `<li>${x}</li>`).join("")}</ol>
+      <p class="small muted">Eles ajudam, mas sozinhos não tratam ${c.label.toLowerCase()}. A receita nº ${recipe} é o passo que faz a diferença.</p>
+    </section>` : ""}
 
     <section class="panel offer" id="offerCard">
       <div class="book">
@@ -890,13 +1104,44 @@ function result() {
         <li><span class="gi" aria-hidden="true">📋</span><div><b>Rotina de beleza passo a passo</b><span>A ordem certa de usar cada receita pra aproveitar tudo o que ela tem.</span></div></li>
         <li><span class="gi" aria-hidden="true">🏠</span><div><b>Tudo feito em casa</b><span>Rituais da beleza coreana sem gastar com uma prateleira de produtos caros.</span></div></li>
       </ul>
+      <div class="how">
+        <h3>Como funciona</h3>
+        <ol>
+          <li><b>Toque no botão de compra</b><span>e finalize o pagamento no checkout.</span></li>
+          <li><b>Receba o acesso ao eBook</b><span>pra ler no celular ou no computador.</span></li>
+          <li><b>Abra na receita nº ${recipe}</b><span>e comece a cuidar da sua pele hoje mesmo.</span></li>
+        </ol>
+      </div>
       <figure class="quote">
         <img src="${AVATAR}" alt="">
         <figcaption>“Juntei nesse guia tudo o que eu faço na minha própria pele. Comece hoje mesmo pela receita nº ${recipe}.”<cite>@${CONFIG.handle}</cite></figcaption>
       </figure>
       ${priceHtml}
-      <a class="btn gold" href="${CONFIG.checkoutUrl}" target="_blank" rel="noopener">Quero o eBook com a receita nº ${recipe}</a>
-      <p class="fine">eBook digital · leia no celular ou no computador</p>
+      <a class="btn gold buy" href="${buy}" target="_blank" rel="noopener">Quero o eBook com a receita nº ${recipe}</a>
+      <p class="fine">${CONFIG.paymentInfo ? `${esc(CONFIG.paymentInfo)} · ` : ""}eBook digital · leia no celular ou no computador</p>
+      ${CONFIG.guaranteeDays ? `
+      <div class="guarantee">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        <div><b>Garantia de ${CONFIG.guaranteeDays} dias</b><span>Se não gostar do eBook, você pede o reembolso em até ${CONFIG.guaranteeDays} dias depois da compra. Sem risco nenhum.</span></div>
+      </div>` : ""}
+    </section>
+
+    <section class="panel faq" aria-label="Perguntas frequentes">
+      <h3>Dúvidas comuns</h3>
+      <details><summary>Tenho pele sensível. Posso usar?</summary><p>Pode, com um cuidado: antes de usar uma receita no rosto, teste um pouquinho na parte de dentro do braço e espere 24 horas. Se arder ou ficar vermelho, não use.</p></details>
+      <details><summary>Como eu recebo o eBook?</summary><p>É um eBook digital. Depois que o pagamento é aprovado, você recebe o acesso pra ler no celular ou no computador.${CONFIG.paymentInfo ? ` ${esc(CONFIG.paymentInfo)}.` : ""}</p></details>
+      ${CONFIG.guaranteeDays ? `<details><summary>E se eu não gostar?</summary><p>Você pede o reembolso em até ${CONFIG.guaranteeDays} dias depois da compra.</p></details>` : ""}
+      <details><summary>Serve pra homem também?</summary><p>Serve. As receitas são pra qualquer pessoa que quer cuidar da pele.</p></details>
+      <a class="btn gold buy" href="${buy}" target="_blank" rel="noopener">Quero a receita nº ${recipe}</a>
+    </section>
+
+    <section class="panel" aria-label="Detalhes da análise">
+      <div class="panel-head"><h3>Detalhes da análise</h3><span>Do que mais precisa de cuidado ao melhor</span></div>
+      ${meters.map(([label, val]) => { const [cls, txt, col] = level(val); return `
+        <div class="meter">
+          <div class="meter-top"><b>${label}</b><span class="pill ${cls}">${txt} · ${val}%</span></div>
+          <div class="track"><i data-w="${val}" style="background:${col}"></i></div>
+        </div>`; }).join("")}
     </section>
 
     <div class="center"><button class="ghost" id="other">Analisar outra parte do corpo</button> <button class="ghost" id="redo">Refazer com outra foto</button></div>
@@ -904,12 +1149,14 @@ function result() {
 
     <div class="sticky" id="sticky" aria-hidden="true">
       <div>
-        <div class="s-txt"><span>Sua receita indicada</span><b>Receita nº ${recipe}</b></div>
-        <a class="btn gold" href="${CONFIG.checkoutUrl}" target="_blank" rel="noopener" tabindex="-1">Quero agora</a>
+        <div class="s-txt"><span>Sua receita indicada${CONFIG.price ? ` · ${esc(CONFIG.price)}` : ""}</span><b>Receita nº ${recipe}</b></div>
+        <a class="btn gold buy" href="${buy}" target="_blank" rel="noopener" tabindex="-1">Quero agora</a>
       </div>
     </div>`);
 
   app.classList.add("has-sticky");
+  track("ViewContent", { content_name: "Resultado do teste", content_category: concern });
+  app.querySelectorAll("a.buy").forEach(a => a.addEventListener("click", () => track("InitiateCheckout", { content_category: concern })));
   requestAnimationFrame(() => setTimeout(() => {
     app.querySelectorAll(".track i").forEach(i => i.style.width = i.dataset.w + "%");
     const g = document.getElementById("gval"); g.style.strokeDashoffset = g.dataset.off;
@@ -926,12 +1173,15 @@ function result() {
     sticky.querySelector("a").tabIndex = show ? 0 : -1;
   });
   ["recipeCard", "offerCard"].forEach(id => io.observe(document.getElementById(id)));
+  document.title = "Seu resultado · Teste de Pele do Han";
 
   document.getElementById("redo").onclick = () => {
+    document.title = "Teste de Pele do Han";
     io.disconnect(); app.classList.remove("has-sticky");
     state.answers = {}; upload();
   };
   document.getElementById("other").onclick = () => {
+    document.title = "Teste de Pele do Han";
     io.disconnect(); app.classList.remove("has-sticky");
     state.answers = {}; state.photoUrl = null; state.area = null; chooseArea();
   };
